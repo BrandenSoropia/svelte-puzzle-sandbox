@@ -6,25 +6,24 @@
   export let values = [0, 1, 2, 3, 4, 5, 6, 7, 8, 9];
   export let initialValue = 0;
   export let onBlur = null;
-  export let simulated = false;
+  export let enableRealLockInteraction = false;
 
   let value = initialValue;
 
-  // Below is for simulated swiping lock only
+  // Below is for enableRealLockInteraction swiping lock only
   let scrollContainerElement;
+  let currentIntersectingElement;
   let observer;
-
   const symbolElements = {};
 
   onMount(() => {
     observer = createIntersectionObserver(
       scrollContainerElement,
-      null,
+      { threshold: 0.7 },
       (entries) => {
         entries.forEach((entry) => {
           if (entry.isIntersecting) {
-            // Idea: Maybe wait for user to stop drag before settings this.
-            value = parseInt(entry.target.dataset.value);
+            currentIntersectingElement = entry.target;
           }
         });
       }
@@ -36,10 +35,21 @@
   });
 </script>
 
-{#if simulated}
-  <!-- TODO: Snap to item -->
-  <!-- TODO: Better styling -->
-  <div class="scrollable-container" bind:this={scrollContainerElement}>
+{#if enableRealLockInteraction}
+  <div
+    class="scrollable-container"
+    bind:this={scrollContainerElement}
+    on:touchend={(e) => {
+      e.preventDefault();
+
+      const newValue = parseInt(currentIntersectingElement.dataset.value);
+      value = newValue;
+      onBlur(newValue);
+      currentIntersectingElement.scrollIntoView({
+        behavior: "smooth",
+      });
+    }}
+  >
     {#each values as value, index}
       <!-- Dynamically generates an element reference -->
       <span
@@ -78,6 +88,13 @@
     height: 32px;
     overflow-y: scroll;
     border: 1px solid black;
+    scroll-behavior: smooth;
+    scrollbar-width: none; /* Disables on Firefox */
+  }
+
+  /* Disables on Safari and Chrome */
+  .scrollable-container::-webkit-scrollbar {
+    display: none;
   }
 
   .scrollable-container > span {

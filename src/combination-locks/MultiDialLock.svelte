@@ -2,8 +2,10 @@
   import Dial from "./components/Dial.svelte";
   import { isCorrectCombination } from "./utils";
 
+  export let name;
   export let combination;
   export let initialGivenValues = Array(combination.length).fill(0);
+  export let enableRealLockInteraction = false;
 
   let givenValues = [...initialGivenValues];
   let isValid = isCorrectCombination(givenValues, combination);
@@ -21,16 +23,16 @@
 </script>
 
 <section>
-  <h2>Multi-dial Lock</h2>
   <p>{isValid ? "\u{1F513} Unlocked!" : "\u{1F512} Locked."}</p>
-  <form>
+  <form {name}>
     {#each combination as _, index}
       <Dial
-        name={`dial-${index}`}
+        {name}
         initialValue={initialGivenValues[index]}
         onBlur={(value) => {
           setDial(index, value);
         }}
+        {enableRealLockInteraction}
       />
     {/each}
   </form>
