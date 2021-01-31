@@ -25,7 +25,7 @@ To test on iOS device when hosting from a mac laptop:
 
 You should have access to it now!
 
-[For Android, I hope the first answer can help you from here.](https://stackoverflow.com/questions/3132105/how-do-you-access-a-website-running-on-localhost-from-iphone-browser)
+[For Android (and iOS/mac visuals), I hope the first answer can help you from here.](https://stackoverflow.com/questions/3132105/how-do-you-access-a-website-running-on-localhost-from-iphone-browser)
 
 Misc:
 
