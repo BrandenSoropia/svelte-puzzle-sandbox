@@ -16,9 +16,7 @@
   }
 
   $: {
-    if (!isValid && isCorrectCombination(givenValues, combination)) {
-      isValid = true;
-    }
+    isValid = isCorrectCombination(givenValues, combination);
   }
 </script>
 
