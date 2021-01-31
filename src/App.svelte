@@ -1,8 +1,12 @@
 <script>
   import MultiDialLock from "./combination-locks/MultiDialLock.svelte";
+  import Dial from "./combination-locks/components/Dial.svelte";
 </script>
 
 <main>
   <h1>Puzzle Sandbox</h1>
-  <MultiDialLock combination={[1, 2, 3]} />
+  <h2>Test</h2>
+  <Dial name="test" onBlur={() => {}} touchable />
+
+  <!-- <MultiDialLock combination={[1, 2, 3]} /> -->
 </main>

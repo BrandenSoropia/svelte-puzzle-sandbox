@@ -1,5 +1,19 @@
 # Dev Notes Dump
 
+## Jan 31, 2021
+
+**Scroll events on div**
+
+Adding `scroll` overflow rule to non-naturally scrolling elements (like a `div`) also allows `onScroll` events to be accessed.
+
+**Is element in view after scroll?**
+Seems there are a few ways of doing it:
+
+- My initial attempt/idea: check if element is in view by getting current scroll position, knowing each item's height, calculate how many items we scrolled passed to get to current item.
+- Check if element is within container https://stackoverflow.com/questions/487073/how-to-check-if-element-is-visible-after-scrolling
+
+Then I found Intersection Observer, a neat API that simplifies this and has seemingly good modern web/mobile browser support! (modern meaning, ignore Internet Explorer) I happened to find out about this from a lucky r/Svelte reddit post asking about this exact thing, which led me to this nice overview by MDN: https://developer.mozilla.org/en-US/docs/Web/API/Intersection_Observer_API. I decided not to use the Svelte specific packages that wraps this because it seems to be a small and easy enough API, and is at it's most flexible rather than being locked in to someone else's API on top of it.
+
 ## Jan 30, 2021
 
 **Special Characters**
