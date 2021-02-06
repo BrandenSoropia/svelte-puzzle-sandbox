@@ -3,11 +3,12 @@
 
   export let onClick;
   export let state = BUTTON_STATES.NEUTRAL;
+  export let highlightInput;
 </script>
 
 <button
-  class:correct={state === BUTTON_STATES.CORRECT}
-  class:incorrect={state === BUTTON_STATES.INCORRECT}
+  class:correct={highlightInput && state === BUTTON_STATES.CORRECT}
+  class:incorrect={highlightInput && state === BUTTON_STATES.INCORRECT}
   on:click={onClick}><slot /></button
 >
 

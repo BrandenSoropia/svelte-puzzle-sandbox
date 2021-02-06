@@ -11,10 +11,12 @@
   export let options;
   export let sequence;
   export let onUnlock;
+  export let highlightInput = false;
 
   let formattedOptions = formatOptions(options);
   let currentIndex = 0;
   let isUnlocked = false;
+  let resetTimeoutId = null;
 
   function formatOptions(_options) {
     return _options.map((option) => ({
@@ -24,6 +26,13 @@
   }
 
   function handleInput(optionIndex) {
+    if (resetTimeoutId) {
+      reset();
+
+      clearTimeout(resetTimeoutId);
+      resetTimeoutId = null;
+    }
+
     const selectedOption = formattedOptions[optionIndex];
 
     if (sequence[currentIndex] === selectedOption.value) {
@@ -38,9 +47,15 @@
       currentIndex = 0;
       selectedOption.state = BUTTON_STATES.INCORRECT;
 
-      setTimeout(() => {
+      // Decide if time is needed for incorrect input animation to play
+      // Look at KeyInput's incorrect CSS class for animation
+      if (highlightInput) {
+        resetTimeoutId = setTimeout(() => {
+          reset();
+        }, 3000);
+      } else {
         reset();
-      }, 3000);
+      }
     }
 
     // Update options and trigger a re-render
@@ -64,7 +79,8 @@
       onClick={() => {
         handleInput(idx);
       }}
-      state={option.state}>{option.label}</KeyInput
+      state={option.state}
+      {highlightInput}>{option.label}</KeyInput
     >
   {/each}
 </div>
