@@ -4,27 +4,51 @@
    * If a correct input is made, report it's right!
    * If a mistake is made, report that it's wrong and restart.
    */
+  import KeyInput from "./components/KeyInput.svelte";
+  import { BUTTON_STATES } from "./constants";
+
   export let name;
   export let options;
   export let sequence;
   export let onUnlock;
 
+  let formattedOptions = formatOptions(options);
   let currentIndex = 0;
   let isUnlocked = false;
 
-  function handleInput(newInputValue) {
-    if (sequence[currentIndex] === newInputValue) {
+  function formatOptions(_options) {
+    return (formattedOptions = _options.map((option) => ({
+      ...option,
+      state: BUTTON_STATES.NEUTRAL,
+    })));
+  }
+
+  function handleInput(optionIndex) {
+    const selectedOption = formattedOptions[optionIndex];
+
+    if (sequence[currentIndex] === selectedOption.value) {
       currentIndex += 1;
-      // TODO: Flash correct
+
+      selectedOption.state = BUTTON_STATES.CORRECT;
 
       if (currentIndex > sequence.length - 1) {
-        // done!
         isUnlocked = true;
       }
     } else {
       currentIndex = 0;
-      // TODO: Flash incorrect
+      selectedOption.state = BUTTON_STATES.INCORRECT;
+
+      setTimeout(() => {
+        reset();
+      }, 3000);
     }
+
+    // Update options and trigger a re-render
+    formattedOptions = [...formattedOptions];
+  }
+
+  function reset() {
+    formattedOptions = formatOptions(options);
   }
 
   $: {
@@ -34,11 +58,13 @@
   }
 </script>
 
-{#each options as option, idx}
-  <button
-    id={`${name}-input-${idx}`}
-    on:click={() => {
-      handleInput(option.value);
-    }}>{option.label}</button
-  >
-{/each}
+<div>
+  {#each formattedOptions as option, idx (name + option.value)}
+    <KeyInput
+      onClick={() => {
+        handleInput(idx);
+      }}
+      state={option.state}>{option.label}</KeyInput
+    >
+  {/each}
+</div>
