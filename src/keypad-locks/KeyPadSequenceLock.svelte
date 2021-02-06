@@ -17,10 +17,10 @@
   let isUnlocked = false;
 
   function formatOptions(_options) {
-    return (formattedOptions = _options.map((option) => ({
+    return _options.map((option) => ({
       ...option,
       state: BUTTON_STATES.NEUTRAL,
-    })));
+    }));
   }
 
   function handleInput(optionIndex) {
