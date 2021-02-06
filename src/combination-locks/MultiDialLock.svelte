@@ -6,6 +6,7 @@
   export let combination;
   export let initialGivenValues = Array(combination.length).fill(0);
   export let enableRealLockInteraction = false;
+  export let onUnlock;
 
   let givenValues = [...initialGivenValues];
   let isValid = isCorrectCombination(givenValues, combination);
@@ -19,11 +20,14 @@
 
   $: {
     isValid = isCorrectCombination(givenValues, combination);
+
+    if (isValid) {
+      onUnlock();
+    }
   }
 </script>
 
 <section>
-  <p>{isValid ? "\u{1F513} Unlocked!" : "\u{1F512} Locked."}</p>
   <form {name}>
     {#each combination as _, index}
       <Dial

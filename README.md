@@ -12,7 +12,7 @@ Requires:
 Running Locally:
 
 1. Install dependencies: `yarn`
-1. Start local server: `npm run dev`
+1. Start local server: `yarn dev`
 1. Navigate to: `http://localhost:5000/`. That's it!
 
 The dev server has been configured to serve to requests other than localhost so mobile can be tested on device. (If you don't like that, remove the `--host 0.0.0.0` from `start` command in `package.json`).
