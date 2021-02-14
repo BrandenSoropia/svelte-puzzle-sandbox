@@ -2,19 +2,33 @@
   import MultiDialLock from "./combination-locks/MultiDialLock.svelte";
   import KeyPadSequenceLock from "./keypad-locks/KeyPadSequenceLock.svelte";
   import LockStatusIndicator from "./components/LockStatusIndicator.svelte";
+  import PassPhraseLock from "./text-input-lock/PassPhraseLock.svelte";
 
   let multiDialIsUnlocked = false;
   let emulateRealLockUnlocked = false;
   let uniqueKeypadSequenceIsUnlocked = false;
   let repetitiveKeypadSequenceIsUnlocked = false;
+  let passPhraseLockIsUnlocked = false;
 </script>
 
 <main>
   <h1>Puzzle Sandbox</h1>
+  <p>Give each a try and let me know what you think!</p>
+  <p>Correct answers are in the title. To reset, refresh the page.</p>
+
+  <section id="pass-phrase-locks">
+    <h2>Pass Phrase Lock</h2>
+    <h3>Just a plain ol' passphrase lock: "password" is password</h3>
+    <LockStatusIndicator isUnlocked={passPhraseLockIsUnlocked} />
+    <PassPhraseLock
+      password="password"
+      onUnlock={() => {
+        passPhraseLockIsUnlocked = true;
+      }}
+    />
+  </section>
   <section id="keypad-locks">
     <h2>Keypad Locks</h2>
-    <p>Give each a try and let me know what you think!</p>
-    <p>Correct answers are in the title. To reset, refresh the page.</p>
     <h3>Repeatitive Sequence Input: 1 1 3 4</h3>
     <LockStatusIndicator isUnlocked={repetitiveKeypadSequenceIsUnlocked} />
     <KeyPadSequenceLock
@@ -28,9 +42,6 @@
       sequence={[0, 0, 2, 3]}
       onUnlock={() => {
         repetitiveKeypadSequenceIsUnlocked = true;
-      }}
-      onIncorrectInput={() => {
-        alert("Wrong code :(");
       }}
     />
     <h3>Unique Sequence Input: A B C D</h3>
@@ -47,9 +58,6 @@
       sequence={[0, 1, 2, 3]}
       onUnlock={() => {
         uniqueKeypadSequenceIsUnlocked = true;
-      }}
-      onIncorrectInput={() => {
-        alert("Wrong code :(");
       }}
     />
   </section>
