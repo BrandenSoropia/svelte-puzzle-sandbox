@@ -1,6 +1,6 @@
 <script>
   import { onMount } from "svelte";
-  import createIntersectionObserver from "../../utils/intersection-observer";
+  import createIntersectionObserver from "../../../utils/intersection-observer";
 
   export let name;
   export let values = [0, 1, 2, 3, 4, 5, 6, 7, 8, 9];

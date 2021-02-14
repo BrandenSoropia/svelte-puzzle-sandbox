@@ -1,0 +1,25 @@
+:root {
+  --main-color: #f7fff7;
+  --secondary-color: #ff6b6b;
+  --tertiary-color: #ffe66d;
+  font-size: 62.5%;
+}
+
+html {
+  background-color: var(--secondary-color);
+}
+
+body {
+  padding: 0;
+  font-size: 1.6rem;
+}
+
+p {
+  line-height: 2.4rem;
+}
+
+section.container {
+  background-color: var(--main-color);
+
+  padding: 1.6rem;
+}

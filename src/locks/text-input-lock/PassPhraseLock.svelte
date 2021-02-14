@@ -1,6 +1,6 @@
 <script>
-  export let name;
-  export let label;
+  export let name = "";
+  export let label = "";
   export let onUnlock = () => {};
   export let password = "";
 
