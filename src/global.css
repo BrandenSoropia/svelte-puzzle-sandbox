@@ -6,12 +6,16 @@
 }
 
 html {
-  background-color: var(--secondary-color);
+  background-color: var(--main-color);
 }
 
 body {
   padding: 0;
   font-size: 1.6rem;
+}
+h1,
+h2 {
+  background-color: var(--secondary-color);
 }
 
 p {
@@ -19,7 +23,5 @@ p {
 }
 
 section.container {
-  background-color: var(--main-color);
-
   padding: 1.6rem;
 }
