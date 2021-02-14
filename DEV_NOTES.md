@@ -1,5 +1,13 @@
 # Dev Notes Dump
 
+## Feb 14, 2021
+
+**CSS Selector Refresher**
+Did some CSS selector refresher and realized `el1 > el2` applies styles to `e2` if they are a direct child of `e1`. I always thought `el1 el2` is how it's done, but that's not quite the same: `el1 el2` applies if `el2` has an ancestor (parent, parent of parent, etc all the way up) `el1`!
+
+**Misc**
+Now I have a small variety of locks, I hope to build a simple straight forward room where a player can start and fully "escape" a room.
+
 ## Jan 31, 2021
 
 **Scroll events on div**
