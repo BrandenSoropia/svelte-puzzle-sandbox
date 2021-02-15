@@ -1,0 +1,28 @@
+:root {
+  --main-color: #f7fff7;
+  --secondary-color: #ff6b6b;
+  --tertiary-color: #ffe66d;
+  font-size: 62.5%;
+}
+
+html {
+  background-color: var(--main-color);
+}
+
+body {
+  padding: 0;
+  font-size: 1.6rem;
+}
+h1,
+h2 {
+  background-color: var(--secondary-color);
+}
+
+p {
+  line-height: 2.4rem;
+}
+
+section.container {
+  padding: 1.6rem;
+}
+header.svelte-u5taqe.svelte-u5taqe{margin:0.8rem}header.svelte-u5taqe h1.svelte-u5taqe{font-size:2.4rem;margin:0}strong.svelte-1ogqj8m.svelte-1ogqj8m.svelte-1ogqj8m{text-decoration:underline}nav#nav-internal.svelte-1ogqj8m.svelte-1ogqj8m.svelte-1ogqj8m{margin-top:0.8rem}nav#nav-internal.svelte-1ogqj8m>ul.svelte-1ogqj8m.svelte-1ogqj8m{padding:0.8rem}nav#nav-internal.svelte-1ogqj8m>ul.svelte-1ogqj8m>li.svelte-1ogqj8m{list-style-type:none}.occurence-container.svelte-1gill1x{padding:1.6rem}.row.svelte-1gill1x{display:flex}.item.svelte-1gill1x{display:block;border:1px solid black;width:5rem;height:5rem;flex-grow:0;flex-shrink:0;flex-basis:5rem}input.correct.svelte-csv31l{background-color:chartreuse}input.incorrect.svelte-csv31l{animation:svelte-csv31l-pulse 1s infinite;animation-iteration-count:3}@keyframes svelte-csv31l-pulse{0%,100%{background-color:inherit}50%{color:white;background-color:#ff4136}}.alphabet-grid.svelte-1v55xfb{display:grid;grid-template-columns:repeat(auto-fill, minmax(25px, 1fr));grid-gap:0.8rem}.letter.svelte-1v55xfb{text-align:center}.scrollable-container.svelte-qlnwar.svelte-qlnwar{display:flex;flex-direction:column;height:32px;overflow-y:scroll;border:1px solid black;scroll-behavior:smooth;scrollbar-width:none}.scrollable-container.svelte-qlnwar.svelte-qlnwar::-webkit-scrollbar{display:none}.scrollable-container.svelte-qlnwar>span.svelte-qlnwar{font-size:24px;line-height:32px}button.svelte-1cqh87l{padding:16px}.correct.svelte-1cqh87l{background-color:chartreuse}.incorrect.svelte-1cqh87l{animation:svelte-1cqh87l-pulse 1s infinite;animation-iteration-count:3}@keyframes svelte-1cqh87l-pulse{0%,100%{background-color:inherit}50%{background-color:#ff4136}}
