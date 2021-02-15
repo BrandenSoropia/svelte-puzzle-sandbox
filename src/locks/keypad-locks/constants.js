@@ -1,5 +1,0 @@
-export const BUTTON_STATES = {
-  NEUTRAL: "NEUTRAL",
-  CORRECT: "CORRECT",
-  INCORRECT: "INCORRECT",
-};
