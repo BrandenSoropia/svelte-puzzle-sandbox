@@ -3,10 +3,15 @@
   import KeyPadSequenceLock from "../locks/keypad-locks/KeyPadSequenceLock.svelte";
   import LockStatusIndicator from "../components/LockStatusIndicator.svelte";
   import PassPhraseLock from "../locks/text-input-lock/PassPhraseLock.svelte";
+
+  // Clues
   import CountOccurenceClue from "../clues/CountOccurencesClue.svelte";
+  import TextCypherClue from "../clues/cyphers/TextCypherClue.svelte";
+  import CYPHER_MODE from "../clues/cyphers/cypher-modes";
 
   // Clue and Locks Section
   let countColorsIsUnlocked = false;
+  let caesarCypherIsUnlocked = false;
 
   // Locks Only Section
   let multiDialIsUnlocked = false;
@@ -23,6 +28,20 @@
 
   <section id="clues-and-locks">
     <h2>Clues and Locks</h2>
+    <h3>Cypher</h3>
+    <LockStatusIndicator isUnlocked={caesarCypherIsUnlocked} />
+    <TextCypherClue
+      passPhrase="This is a test encrypted password"
+      hint="MEOW"
+      config={{ mode: CYPHER_MODE.CAESAR, key: 3 }}
+    />
+    <PassPhraseLock
+      passPhrase="This is a test encrypted password"
+      onUnlock={() => {
+        caesarCypherIsUnlocked = true;
+      }}
+    />
+    <h3>Counting</h3>
     <LockStatusIndicator isUnlocked={countColorsIsUnlocked} />
     <p>Red -> Blue -> Yellow</p>
     <CountOccurenceClue
@@ -56,7 +75,7 @@
     <h3>Just a plain ol' passphrase lock: "password" is password</h3>
     <LockStatusIndicator isUnlocked={passPhraseLockIsUnlocked} />
     <PassPhraseLock
-      password="password"
+      passPhrase="password"
       onUnlock={() => {
         passPhraseLockIsUnlocked = true;
       }}

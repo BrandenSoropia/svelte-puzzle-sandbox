@@ -2,14 +2,14 @@
   export let name = "";
   export let label = "";
   export let onUnlock = () => {};
-  export let password = "";
+  export let passPhrase = "";
 
   let value = "";
   let isCorrect = false;
   let isIncorrect = false;
 
-  function isValidPasswordGiven(_value) {
-    if (_value === password) {
+  function isValidPassPhrase(_value) {
+    if (_value === passPhrase) {
       isCorrect = true;
       onUnlock();
     } else {
@@ -25,7 +25,7 @@
   id={`pass-phrase-lock-${name}`}
   autocomplete="off"
   on:submit|preventDefault={() => {
-    isValidPasswordGiven(value);
+    isValidPassPhrase(value);
     return false;
   }}
 >
