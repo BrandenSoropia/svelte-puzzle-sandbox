@@ -3,7 +3,12 @@
   import KeyPadSequenceLock from "../locks/keypad-locks/KeyPadSequenceLock.svelte";
   import LockStatusIndicator from "../components/LockStatusIndicator.svelte";
   import PassPhraseLock from "../locks/text-input-lock/PassPhraseLock.svelte";
+  import CountOccurenceClue from "../clues/CountOccurencesClue.svelte";
 
+  // Clue and Locks Section
+  let countColorsIsUnlocked = false;
+
+  // Locks Only Section
   let multiDialIsUnlocked = false;
   let emulateRealLockUnlocked = false;
   let uniqueKeypadSequenceIsUnlocked = false;
@@ -16,6 +21,36 @@
   <p>Give each a try and let me know what you think!</p>
   <p>Correct answers are in the title. To reset, refresh the page.</p>
 
+  <section id="clues-and-locks">
+    <h2>Clues and Locks</h2>
+    <LockStatusIndicator isUnlocked={countColorsIsUnlocked} />
+    <p>Red -> Blue -> Yellow</p>
+    <CountOccurenceClue
+      rows={[
+        ["red", "blue", "red", "red", "yellow"],
+        ["blue", "blue", "red", "yellow", "red"],
+        ["blue", "yellow", "yellow", "red", "blue"],
+      ]}
+    />
+    <KeyPadSequenceLock
+      name="simple-keypad"
+      options={[
+        { label: "1", value: 1 },
+        { label: "2", value: 2 },
+        { label: "3", value: 3 },
+        { label: "4", value: 4 },
+        { label: "5", value: 5 },
+        { label: "6", value: 6 },
+        { label: "7", value: 7 },
+        { label: "8", value: 8 },
+        { label: "9", value: 9 },
+      ]}
+      sequence={[6, 5, 4]}
+      onUnlock={() => {
+        countColorsIsUnlocked = true;
+      }}
+    />
+  </section>
   <section id="pass-phrase-locks">
     <h2>Pass Phrase Lock</h2>
     <h3>Just a plain ol' passphrase lock: "password" is password</h3>
@@ -34,12 +69,12 @@
     <KeyPadSequenceLock
       name="simple-keypad"
       options={[
-        { label: "1", value: 0 },
-        { label: "2", value: 1 },
-        { label: "3", value: 2 },
-        { label: "4", value: 3 },
+        { label: "1", value: 1 },
+        { label: "2", value: 2 },
+        { label: "3", value: 3 },
+        { label: "4", value: 4 },
       ]}
-      sequence={[0, 0, 2, 3]}
+      sequence={[1, 1, 3, 4]}
       onUnlock={() => {
         repetitiveKeypadSequenceIsUnlocked = true;
       }}
