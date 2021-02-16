@@ -35,3 +35,24 @@ I use VS Code, so this project includes recommended extensions!
 
 - Want to try something new to refresh from day to day.
 - Dreaming of making a web room escape like game for fun!
+
+
+## Sketchy Github Pages Deploy
+
+First, it looks like all GH pages are sources from `https://<your_gh_username>.github.io/`. When you add a new repo to GH pages, it add's a new route (maybe a.k.a sub-directory?) that looks like this: `https://<your_gh_username>.github.io/<new_repo_name>`. Going with the "sub-directory" idea, your new repo's GH page will reference `root` as `https://<your_gh_username>.github.io/`, not `https://<your_gh_username>.github.io/<new_repo_name>`. So if you deploy a web project that sources some CSS/JS from `/build` etc, it will be starting from `root` and throw a 404!
+
+To fix that, here's the sketchy fix:
+
+In you're new repo's `index.html` just update those paths in accordance to the true "root". In this repo's case:
+```
+<!-- All paths should source from "/svelte-puzzle-sandbox", not "/" -->
+<link
+  rel="icon"
+  type="image/png"
+  href="/svelte-puzzle-sandbox/favicon.png"
+/>
+<link rel="stylesheet" href="/svelte-puzzle-sandbox/global.css" />
+<link rel="stylesheet" href="/svelte-puzzle-sandbox/build/bundle.css" />
+
+<script defer src="/svelte-puzzle-sandbox//build/bundle.js"></script>
+```
