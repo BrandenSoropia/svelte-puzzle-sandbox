@@ -56,7 +56,7 @@ In `public/index.html` just update those paths in accordance to the true "root".
 <link rel="stylesheet" href="/svelte-puzzle-sandbox/global.css" />
 <link rel="stylesheet" href="/svelte-puzzle-sandbox/build/bundle.css" />
 
-<script defer src="/svelte-puzzle-sandbox//build/bundle.js"></script>
+<script defer src="/svelte-puzzle-sandbox/build/bundle.js"></script>
 ```
 
 Finally, in your target GH pages branch you should only have the build files. That's everything in `/public`. Make a new commit and push that folder now. It should be good to go and live within a few moments!
