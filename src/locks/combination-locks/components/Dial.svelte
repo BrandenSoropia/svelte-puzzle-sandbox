@@ -53,6 +53,7 @@
     {#each values as value, index}
       <!-- Dynamically generates an element reference -->
       <span
+        class="emulated-dial"
         id={`${name}-symbol-${index}`}
         bind:this={symbolElements[index]}
         data-value={value}>{value}</span
@@ -90,6 +91,8 @@
     border: 1px solid black;
     scroll-behavior: smooth;
     scrollbar-width: none; /* Disables on Firefox */
+    margin-bottom: 16px;
+    text-align: center;
   }
 
   /* Disables on Safari and Chrome */
@@ -97,7 +100,7 @@
     display: none;
   }
 
-  .scrollable-container > span {
+  .scrollable-container .emulated-dial {
     font-size: 24px;
     line-height: 32px;
   }

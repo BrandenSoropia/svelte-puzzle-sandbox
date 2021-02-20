@@ -16,9 +16,9 @@
         >
       </li>
       <li>
-        <p>
-          {"\u{1F3D7} (In-Dev) Simple Start to Finish Escape Room"}
-        </p>
+        <a class="nav-link" href="/simple-escape" use:link
+          >{"\u{1F3D7} Simple Escape"}</a
+        >
       </li>
       <li>
         <p>
@@ -56,6 +56,7 @@
     padding: 0.8rem;
   }
   nav#nav-internal > ul > li {
+    margin-bottom: 8px;
     list-style-type: none;
   }
 </style>

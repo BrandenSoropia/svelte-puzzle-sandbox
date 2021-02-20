@@ -12,6 +12,7 @@
   export let sequence;
   export let onUnlock;
   export let highlightInput = false;
+  export let disabled = false;
 
   let formattedOptions = formatOptions(options);
   let currentIndex = 0;
@@ -73,9 +74,10 @@
   }
 </script>
 
-<div>
+<div class="keypad-sequence-container">
   {#each formattedOptions as option, idx (name + option.value)}
     <KeyInput
+      {disabled}
       onClick={() => {
         handleInput(idx);
       }}
@@ -84,3 +86,10 @@
     >
   {/each}
 </div>
+
+<style>
+  .keypad-sequence-container {
+    display: flex;
+    justify-content: space-evenly;
+  }
+</style>

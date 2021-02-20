@@ -4,9 +4,11 @@
   export let onClick;
   export let state = BUTTON_STATES.NEUTRAL;
   export let highlightInput;
+  export let disabled = false;
 </script>
 
 <button
+  {disabled}
   class:correct={highlightInput && state === BUTTON_STATES.CORRECT}
   class:incorrect={highlightInput && state === BUTTON_STATES.INCORRECT}
   on:click={onClick}><slot /></button
